@@ -6,6 +6,7 @@ import com.atoken.game.business.IMovable
 import com.atoken.game.enums.Direction
 import org.itheima.kotlin.game.core.Painter
 
+
 /**
  * Auther Aatoken
  * Date 2019/4/19
@@ -69,10 +70,52 @@ class Tank(override var x: Int, override var y: Int) : IMovable {
         if (y > Config.gameHeight - height) y = Config.gameHeight - height
     }
 
-
+    /**
+     * 更新坦克的移动方向
+     */
     override fun notifyCollision(direction: Direction?, block: IBlockable?) {
         //接收到碰撞信息
         this.badDirection = direction
+    }
+
+    /**
+     * 发射子弹
+     */
+    fun shot():Bullet
+    {
+
+        return Bullet( currentDirection,{bulletWidth, bulletHeight ->
+
+            //计算子弹真实的坐标
+            val tankX = x
+            val tankY = y
+            val tankWidth = width
+            val tankHeight = height
+
+            var bulletX = 0
+            var bulletY = 0
+
+            when (currentDirection) {
+                Direction.UP -> {
+                    bulletX = tankX + (tankWidth - bulletWidth) / 2
+                    bulletY = tankY - bulletHeight / 2
+                }
+                Direction.DOWN -> {
+                    bulletX = tankX + (tankWidth - bulletWidth) / 2
+                    bulletY = tankY + tankHeight - bulletHeight / 2
+                }
+                Direction.LEFT -> {
+                    bulletX = tankX - bulletWidth / 2
+                    bulletY = tankY + (tankHeight - bulletHeight) / 2
+                }
+                Direction.RIGHT -> {
+                    bulletX = tankX + tankWidth - bulletWidth / 2
+                    bulletY = tankY + (tankHeight - bulletHeight) / 2
+                }
+            }
+            Pair(bulletX, bulletY)
+
+        })
     }
 
 

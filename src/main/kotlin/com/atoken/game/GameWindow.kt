@@ -9,6 +9,7 @@ import javafx.scene.input.KeyEvent
 import org.itheima.kotlin.game.core.Window
 import java.io.File
 
+
 /**
  * Auther Aatoken
  * Date 2019/4/19
@@ -67,7 +68,10 @@ class GameWindow : Window(title = "坦克大战1.0"
             KeyCode.A -> tank.move(Direction.LEFT)
             KeyCode.D -> tank.move(Direction.RIGHT)
             KeyCode.S -> tank.move(Direction.DOWN)
-
+            KeyCode.J -> {
+                val bullet = tank.shot()
+                views.add(bullet)
+            }
         }
 
 
@@ -92,7 +96,7 @@ class GameWindow : Window(title = "坦克大战1.0"
                 val direction = move.willCollision(block)
                 direction?.let {
                     //碰到阻碍物，跳出循环
-                    badDirection=direction
+                    badDirection = direction
                     badBlock = block
                     return@blockTag
                 }
