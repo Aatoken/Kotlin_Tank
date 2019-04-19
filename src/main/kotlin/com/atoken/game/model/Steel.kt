@@ -1,6 +1,7 @@
 package com.atoken.game.model
 
 import com.atoken.game.Config
+import com.atoken.game.business.IBlockable
 import org.itheima.kotlin.game.core.Painter
 
 /**
@@ -9,7 +10,7 @@ import org.itheima.kotlin.game.core.Painter
  * Des 铁
  */
 
-class Steel (override val x: Int, override val y: Int) : View {
+class Steel (override val x: Int, override val y: Int) :IBlockable {
 
     override val width: Int = Config.block
     override val height: Int = Config.block

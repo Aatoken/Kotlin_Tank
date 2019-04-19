@@ -1,5 +1,7 @@
 package com.atoken.game
 
+import com.atoken.game.business.IBlockable
+import com.atoken.game.business.IMovable
 import com.atoken.game.enums.Direction
 import com.atoken.game.model.*
 import javafx.scene.input.KeyCode
@@ -17,7 +19,7 @@ class GameWindow : Window(title = "坦克大战1.0"
         , width = Config.gameWidth
         , height = Config.gameHeight) {
 
-    private val views = arrayListOf<View>()
+    private val views = arrayListOf<IView>()
     private lateinit var tank: Tank
     override fun onCreate() {
 
@@ -45,13 +47,16 @@ class GameWindow : Window(title = "坦克大战1.0"
         tank = Tank(Config.block * 3, Config.block * 9)
         views.add(tank)
 
+
     }
 
     override fun onDisplay() {
 
+        //绘画出所有的物体
         views.forEach {
             it.draw()
         }
+
 
     }
 
@@ -64,9 +69,42 @@ class GameWindow : Window(title = "坦克大战1.0"
             KeyCode.S -> tank.move(Direction.DOWN)
 
         }
+
+
     }
 
     override fun onRefresh() {
+
+        //业务逻辑
+
+        //检测物体是否发生碰撞
+        //1.找到运动的物体
+        views.filter { it is IMovable }.forEach { move ->
+            move as IMovable
+            var badDirection: Direction? = null
+            var badBlock: IBlockable? = null
+
+            //2.找到阻碍物
+            views.filter { it is IBlockable }.forEach blockTag@{ block ->
+                //3.检测是否发生碰撞
+                block as IBlockable
+                // 获得碰撞的方向
+                val direction = move.willCollision(block)
+                direction?.let {
+                    //碰到阻碍物，跳出循环
+                    badDirection=direction
+                    badBlock = block
+                    return@blockTag
+                }
+
+            }
+
+            //找到和move碰撞的block，找到会碰撞的方向
+            //通知可以移动的物体，会在哪个方向和哪个物体碰撞
+            move.notifyCollision(badDirection, badBlock)
+        }
+
+
     }
 
 

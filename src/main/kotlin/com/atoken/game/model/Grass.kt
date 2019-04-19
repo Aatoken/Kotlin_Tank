@@ -8,7 +8,7 @@ import org.itheima.kotlin.game.core.Painter
  * Date 2019/4/19
  * Des 草
  */
-class Grass(override val x: Int, override val y: Int) : View {
+class Grass(override val x: Int, override val y: Int) : IView {
 
     override val width: Int = Config.block
     override val height: Int = Config.block
