@@ -1,6 +1,8 @@
 package com.atoken.game
 
+import com.atoken.game.business.IAutoMovable
 import com.atoken.game.business.IBlockable
+import com.atoken.game.business.IDestroyable
 import com.atoken.game.business.IMovable
 import com.atoken.game.enums.Direction
 import com.atoken.game.model.*
@@ -8,7 +10,7 @@ import javafx.scene.input.KeyCode
 import javafx.scene.input.KeyEvent
 import org.itheima.kotlin.game.core.Window
 import java.io.File
-
+import java.util.concurrent.CopyOnWriteArrayList
 
 /**
  * Auther Aatoken
@@ -20,7 +22,9 @@ class GameWindow : Window(title = "坦克大战1.0"
         , width = Config.gameWidth
         , height = Config.gameHeight) {
 
-    private val views = arrayListOf<IView>()
+    //private val views = arrayListOf<IView>()
+    //线程安全集合
+    private val views = CopyOnWriteArrayList<IView>()
     private lateinit var tank: Tank
     override fun onCreate() {
 
@@ -77,6 +81,9 @@ class GameWindow : Window(title = "坦克大战1.0"
 
     }
 
+    /**
+     * 一直刷新界面
+     */
     override fun onRefresh() {
 
         //业务逻辑
@@ -89,7 +96,7 @@ class GameWindow : Window(title = "坦克大战1.0"
             var badBlock: IBlockable? = null
 
             //2.找到阻碍物
-            views.filter { it is IBlockable }.forEach blockTag@{ block ->
+            views.filter { (it is IBlockable) and (move != it) }.forEach blockTag@{ block ->
                 //3.检测是否发生碰撞
                 block as IBlockable
                 // 获得碰撞的方向
@@ -106,6 +113,19 @@ class GameWindow : Window(title = "坦克大战1.0"
             //找到和move碰撞的block，找到会碰撞的方向
             //通知可以移动的物体，会在哪个方向和哪个物体碰撞
             move.notifyCollision(badDirection, badBlock)
+        }
+
+        /**
+         * 检测自动移动能力的物体，让他们自己动起来
+         */
+        views.filter { it is IAutoMovable }.forEach {
+            (it as IAutoMovable).autoMove()
+        }
+
+        views.filter { it is IDestroyable }.forEach {
+            if ((it as IDestroyable).isDestroyed()) {
+                views.remove(it)
+            }
         }
 
 

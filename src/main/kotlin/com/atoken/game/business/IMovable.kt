@@ -24,6 +24,16 @@ interface IMovable : IView {
     val speed: Int
 
     /**
+     * 检测到遇到障碍物的方向
+     */
+    var badDirection: Direction?
+
+    /**
+     * 什么样的障碍物
+     */
+    var blockable:IBlockable?
+
+    /**
      * 检测在那个方向那个将会发生碰撞
      */
     fun willCollision(block: IBlockable): Direction? {

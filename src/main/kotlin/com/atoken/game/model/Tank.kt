@@ -2,6 +2,7 @@ package com.atoken.game.model
 
 import com.atoken.game.Config
 import com.atoken.game.business.IBlockable
+import com.atoken.game.business.IHandMovable
 import com.atoken.game.business.IMovable
 import com.atoken.game.enums.Direction
 import org.itheima.kotlin.game.core.Painter
@@ -12,7 +13,7 @@ import org.itheima.kotlin.game.core.Painter
  * Date 2019/4/19
  * Des 坦克
  */
-class Tank(override var x: Int, override var y: Int) : IMovable {
+class Tank(override var x: Int, override var y: Int) : IHandMovable {
 
 
     override val width: Int = Config.block
@@ -23,7 +24,11 @@ class Tank(override var x: Int, override var y: Int) : IMovable {
     override val speed: Int = 16
 
     //坦克不可以走的方向
-    private var badDirection: Direction? = null
+    override var badDirection: Direction? = null
+    override var blockable: IBlockable? = null
+
+
+
 
     override fun draw() {
 
@@ -42,7 +47,7 @@ class Tank(override var x: Int, override var y: Int) : IMovable {
     /**
      * 坦克移动
      */
-    fun move(direction: Direction) {
+    override fun move(direction: Direction) {
 
         // 判断是否是往要碰撞的方向走
         if (direction == badDirection) {
@@ -76,15 +81,15 @@ class Tank(override var x: Int, override var y: Int) : IMovable {
     override fun notifyCollision(direction: Direction?, block: IBlockable?) {
         //接收到碰撞信息
         this.badDirection = direction
+        this.blockable = block
     }
 
     /**
      * 发射子弹
      */
-    fun shot():Bullet
-    {
+    fun shot(): Bullet {
 
-        return Bullet( currentDirection,{bulletWidth, bulletHeight ->
+        return Bullet(currentDirection, { bulletWidth, bulletHeight ->
 
             //计算子弹真实的坐标
             val tankX = x
