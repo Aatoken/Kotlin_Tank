@@ -1,19 +1,19 @@
 package com.atoken.game.model
 
 import com.atoken.game.Config
-import com.atoken.game.business.IBlockable
-import com.atoken.game.business.IHandMovable
-import com.atoken.game.business.IMovable
+import com.atoken.game.business.*
 import com.atoken.game.enums.Direction
+import org.itheima.kotlin.game.core.Composer
 import org.itheima.kotlin.game.core.Painter
 
 
 /**
  * Auther Aatoken
  * Date 2019/4/19
- * Des 坦克
+ * Des 坦克 可以移动，可以被销毁，障碍物，可以被挨打
  */
-class Tank(override var x: Int, override var y: Int) : IHandMovable {
+class Tank(override var x: Int, override var y: Int) :
+        IMovable, IDestroyable, IBlockable, ISufferable {
 
 
     override val width: Int = Config.block
@@ -26,8 +26,6 @@ class Tank(override var x: Int, override var y: Int) : IHandMovable {
     //坦克不可以走的方向
     override var badDirection: Direction? = null
     override var blockable: IBlockable? = null
-
-
 
 
     override fun draw() {
@@ -120,8 +118,22 @@ class Tank(override var x: Int, override var y: Int) : IHandMovable {
             }
             Pair(bulletX, bulletY)
 
-        })
+        }, this)
     }
 
+
+    override fun isDestroyed(): Boolean = blood <= 0
+
+    //坦克的血量
+    override var blood: Int = 4
+
+    //
+    override fun notifySuffer(attackable: IAttackable): Array<IView>? {
+        blood -= attackable.attackPower
+
+        //喊疼
+        Composer.play("snd/hit.wav")
+        return null
+    }
 
 }

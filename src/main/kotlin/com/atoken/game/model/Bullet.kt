@@ -1,9 +1,7 @@
 package com.atoken.game.model
 
 import com.atoken.game.Config
-import com.atoken.game.business.IAutoMovable
-import com.atoken.game.business.IBlockable
-import com.atoken.game.business.IDestroyable
+import com.atoken.game.business.*
 import com.atoken.game.enums.Direction
 import org.itheima.kotlin.game.core.Painter
 
@@ -11,12 +9,13 @@ import org.itheima.kotlin.game.core.Painter
 /**
  * Auther Aatoken
  * Date 2019/4/19
- * Des 子弹
+ * Des 子弹: 可移动的，障碍物，具有攻击，能承受攻击，可以被销毁
  */
 class Bullet(override val currentDirection: Direction,
-             create: (width: Int, height: Int) -> Pair<Int, Int>) :
-        IAutoMovable, IDestroyable {
-
+             create: (width: Int, height: Int) -> Pair<Int, Int>,
+             override val owner: IView) :
+        IAutoMovable, IAttackable, IDestroyable,
+        ISufferable,IBlockable {
 
     //子弹的位置
     override var x: Int = 0
@@ -49,7 +48,7 @@ class Bullet(override val currentDirection: Direction,
     override var height: Int = 100
 
     //子弹是否被销毁
-    private var isDestroyed:Boolean =false
+    private var isDestroyed: Boolean = false
 
     //子弹的路径
     private var imagePath: String = when (currentDirection) {
@@ -78,11 +77,11 @@ class Bullet(override val currentDirection: Direction,
     }
 
 
-    /**
-     * 自己移动
-     */
-    override fun autoMove() {
-
+    //移动
+    override fun move(direction: Direction) {
+        if (badDirection != null) {
+            this.isDestroyed = blockable !is Water
+        }
         //坦克的坐标需要发生变化
         //根据不同的方向，改变对应的坐标
         when (currentDirection) {
@@ -92,12 +91,8 @@ class Bullet(override val currentDirection: Direction,
             Direction.RIGHT -> x += speed
         }
 
-        if (badDirection!=null)
-        {
-           this.isDestroyed=true
-        }
-
     }
+
 
 
     /**
@@ -112,6 +107,36 @@ class Bullet(override val currentDirection: Direction,
         if (y > Config.gameHeight) return true
 
         return false
+    }
+
+
+    //血条
+    override val blood: Int = 1
+
+    /**
+     * 实时更新血条
+     */
+    override fun notifySuffer(attackable: IAttackable): Array<IView>? {
+
+        return null
+    }
+
+
+
+
+    //攻击力为2
+    override val attackPower: Int=2
+
+
+    /**
+     * 是否发生碰撞
+     */
+    override fun isCollision(ISufferable: ISufferable): Boolean {
+        return false
+    }
+
+    override fun notifyAttack(ISufferable: ISufferable) {
+
     }
 
 

@@ -119,9 +119,13 @@ class GameWindow : Window(title = "坦克大战1.0"
          * 检测自动移动能力的物体，让他们自己动起来
          */
         views.filter { it is IAutoMovable }.forEach {
-            (it as IAutoMovable).autoMove()
+            (it as IAutoMovable).move(Direction.UP)
         }
 
+        
+        /**
+         * 检测依据被销毁的移除
+         */
         views.filter { it is IDestroyable }.forEach {
             if ((it as IDestroyable).isDestroyed()) {
                 views.remove(it)

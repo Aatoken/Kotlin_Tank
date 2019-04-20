@@ -15,6 +15,11 @@ interface IDestroyable :IView {
      */
     fun isDestroyed(): Boolean
 
-
+    /**
+     * 死给你看的功能
+     */
+    fun showDestroy(): Array<IView>? {
+        return null
+    }
 
 }
