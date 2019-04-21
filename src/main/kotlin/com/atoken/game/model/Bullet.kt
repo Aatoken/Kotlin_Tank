@@ -3,6 +3,7 @@ package com.atoken.game.model
 import com.atoken.game.Config
 import com.atoken.game.business.*
 import com.atoken.game.enums.Direction
+import com.atoken.game.ext.checkCollision
 import org.itheima.kotlin.game.core.Painter
 
 
@@ -15,32 +16,12 @@ class Bullet(override val currentDirection: Direction,
              create: (width: Int, height: Int) -> Pair<Int, Int>,
              override val owner: IView) :
         IAutoMovable, IAttackable, IDestroyable,
-        ISufferable,IBlockable {
+        ISufferable {
+
 
     //子弹的位置
     override var x: Int = 0
     override var y: Int = 0
-    //子弹的速度
-    override val speed: Int = 32
-
-    /**
-     * 将要遇到障碍物的方向
-     */
-    override var badDirection: Direction? = null
-    /**
-     * 将要遇到的障碍物
-     */
-    override var blockable: IBlockable? = null
-
-
-    /**
-     * 实时刷新子弹遇到的障碍物的方向与障碍物
-     */
-    override fun notifyCollision(direction: Direction?, block: IBlockable?) {
-        //接收到碰撞信息
-        this.badDirection = direction
-        this.blockable = block
-    }
 
 
     //子弹的宽度与高度
@@ -76,21 +57,16 @@ class Bullet(override val currentDirection: Direction,
         Painter.drawImage(imagePath, x, y)
     }
 
-
-    //移动
-    override fun move(direction: Direction) {
-        if (badDirection != null) {
-            this.isDestroyed = blockable !is Water
-        }
-        //坦克的坐标需要发生变化
-        //根据不同的方向，改变对应的坐标
+    //子弹的速度
+    override val speed: Int = 15
+    override fun autoMove() {
+        //根据自己的方向，来改变自己的x和y
         when (currentDirection) {
             Direction.UP -> y -= speed
             Direction.DOWN -> y += speed
             Direction.LEFT -> x -= speed
             Direction.RIGHT -> x += speed
         }
-
     }
 
 
@@ -117,26 +93,26 @@ class Bullet(override val currentDirection: Direction,
      * 实时更新血条
      */
     override fun notifySuffer(attackable: IAttackable): Array<IView>? {
-
-        return null
+        return arrayOf(Blast(x, y))
     }
 
 
 
 
     //攻击力为2
-    override val attackPower: Int=2
+    override val attackPower: Int=1
 
 
     /**
      * 是否发生碰撞
      */
-    override fun isCollision(ISufferable: ISufferable): Boolean {
-        return false
+    override fun isCollision(sufferable: ISufferable): Boolean {
+        return checkCollision(sufferable)
     }
 
-    override fun notifyAttack(ISufferable: ISufferable) {
-
+    override fun notifyAttack(sufferable: ISufferable) {
+        //打到墙体销毁子弹
+        isDestroyed = true
     }
 
 

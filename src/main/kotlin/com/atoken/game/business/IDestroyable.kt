@@ -18,7 +18,7 @@ interface IDestroyable :IView {
     /**
      * 死给你看的功能
      */
-    fun showDestroy(): Array<IView>? {
+    fun showDestroy(): Array<IView>?{
         return null
     }
 

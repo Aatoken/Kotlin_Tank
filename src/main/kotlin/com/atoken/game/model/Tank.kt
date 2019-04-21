@@ -13,7 +13,7 @@ import org.itheima.kotlin.game.core.Painter
  * Des 坦克 可以移动，可以被销毁，障碍物，可以被挨打
  */
 class Tank(override var x: Int, override var y: Int) :
-        IMovable, IDestroyable, IBlockable, ISufferable {
+        IMovable, IBlockable, ISufferable {
 
 
     override val width: Int = Config.block
@@ -122,12 +122,12 @@ class Tank(override var x: Int, override var y: Int) :
     }
 
 
-    override fun isDestroyed(): Boolean = blood <= 0
+
 
     //坦克的血量
     override var blood: Int = 4
 
-    //
+    //被攻击之后
     override fun notifySuffer(attackable: IAttackable): Array<IView>? {
         blood -= attackable.attackPower
 

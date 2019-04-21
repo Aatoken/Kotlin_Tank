@@ -1,11 +1,11 @@
 package com.atoken.game
 
-import com.atoken.game.business.IAutoMovable
-import com.atoken.game.business.IBlockable
-import com.atoken.game.business.IDestroyable
-import com.atoken.game.business.IMovable
+import com.atoken.game.business.*
 import com.atoken.game.enums.Direction
+import com.atoken.game.ext.checkCollision
 import com.atoken.game.model.*
+import com.sun.org.apache.bcel.internal.generic.IADD
+import com.sun.org.apache.bcel.internal.generic.ISUB
 import javafx.scene.input.KeyCode
 import javafx.scene.input.KeyEvent
 import org.itheima.kotlin.game.core.Window
@@ -96,7 +96,8 @@ class GameWindow : Window(title = "坦克大战1.0"
             var badBlock: IBlockable? = null
 
             //2.找到阻碍物
-            views.filter { (it is IBlockable) and (move != it) }.forEach blockTag@{ block ->
+            views.filter { (it is IBlockable) and (move != it) }
+                    .forEach blockTag@{ block ->
                 //3.检测是否发生碰撞
                 block as IBlockable
                 // 获得碰撞的方向
@@ -119,10 +120,10 @@ class GameWindow : Window(title = "坦克大战1.0"
          * 检测自动移动能力的物体，让他们自己动起来
          */
         views.filter { it is IAutoMovable }.forEach {
-            (it as IAutoMovable).move(Direction.UP)
+            (it as IAutoMovable).autoMove()
         }
 
-        
+
         /**
          * 检测依据被销毁的移除
          */
@@ -130,6 +131,33 @@ class GameWindow : Window(title = "坦克大战1.0"
             if ((it as IDestroyable).isDestroyed()) {
                 views.remove(it)
             }
+        }
+
+
+        /**
+         * 获取具有攻击的
+         */
+        views.filter { it is IAttackable }.forEach { attack ->
+            attack as IAttackable
+
+            views.filter { (it is ISufferable) and (attack != it) and (attack.owner != it) }
+                    .forEach sufferTag@{suffer->
+                        suffer as ISufferable
+
+                        //判断子弹是否打到被打击物体
+                        if (attack.isCollision(suffer)) {
+                            //提示子弹的刷新
+                            attack.notifyAttack(suffer)
+                            //通知被打攻击者，产生碰撞
+                            val sufferView=suffer.notifySuffer(attack)
+                            sufferView?.let {
+                                //显示挨打的效果
+                                views.addAll(sufferView)
+                            }
+                            return@sufferTag
+                        }
+                    }
+
         }
 
 

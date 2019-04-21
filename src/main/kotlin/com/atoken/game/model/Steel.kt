@@ -1,8 +1,12 @@
 package com.atoken.game.model
 
 import com.atoken.game.Config
+import com.atoken.game.business.IAttackable
 import com.atoken.game.business.IBlockable
+import com.atoken.game.business.ISufferable
+import org.itheima.kotlin.game.core.Composer
 import org.itheima.kotlin.game.core.Painter
+import java.io.File
 
 /**
  * Auther Aatoken
@@ -11,7 +15,15 @@ import org.itheima.kotlin.game.core.Painter
  */
 
 class Steel (override val x: Int, override val y: Int)
-    :IBlockable {
+    :IBlockable,ISufferable {
+    override val blood: Int=1
+
+
+    override fun notifySuffer(attackable: IAttackable): Array<IView>? {
+        //喊疼
+        Composer.play("snd/hit.wav")
+         return null
+    }
 
     override val width: Int = Config.block
     override val height: Int = Config.block

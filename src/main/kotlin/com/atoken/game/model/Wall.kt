@@ -39,7 +39,8 @@ class Wall(override val x: Int, override val y: Int) :
         //喊疼
         Composer.play("snd/hit.wav")
 
-        return null
+        //显示爆炸物
+        return  arrayOf(Blast(x, y))
     }
 
 

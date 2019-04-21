@@ -19,7 +19,8 @@ interface IAttackable:IView {
     val attackPower: Int
 
     //判断是否碰撞
-    fun isCollision(ISufferable: ISufferable): Boolean
+    fun isCollision(sufferable: ISufferable): Boolean
 
-    fun notifyAttack(ISufferable: ISufferable)
+    //攻击之后实时更新
+    fun notifyAttack(sufferable: ISufferable)
 }
