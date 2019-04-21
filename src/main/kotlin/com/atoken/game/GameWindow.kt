@@ -42,6 +42,7 @@ class GameWindow : Window(title = "坦克大战1.0"
                     '铁' -> views.add(Steel(columnNum * Config.block, lineNum * Config.block))
                     '水' -> views.add(Water(columnNum * Config.block, lineNum * Config.block))
                     '草' -> views.add(Grass(columnNum * Config.block, lineNum * Config.block))
+                    '敌' -> views.add(Enemy(columnNum * Config.block, lineNum * Config.block))
                 }
                 columnNum++
             }
@@ -98,18 +99,18 @@ class GameWindow : Window(title = "坦克大战1.0"
             //2.找到阻碍物
             views.filter { (it is IBlockable) and (move != it) }
                     .forEach blockTag@{ block ->
-                //3.检测是否发生碰撞
-                block as IBlockable
-                // 获得碰撞的方向
-                val direction = move.willCollision(block)
-                direction?.let {
-                    //碰到阻碍物，跳出循环
-                    badDirection = direction
-                    badBlock = block
-                    return@blockTag
-                }
+                        //3.检测是否发生碰撞
+                        block as IBlockable
+                        // 获得碰撞的方向
+                        val direction = move.willCollision(block)
+                        direction?.let {
+                            //碰到阻碍物，跳出循环
+                            badDirection = direction
+                            badBlock = block
+                            return@blockTag
+                        }
 
-            }
+                    }
 
             //找到和move碰撞的block，找到会碰撞的方向
             //通知可以移动的物体，会在哪个方向和哪个物体碰撞
@@ -141,7 +142,7 @@ class GameWindow : Window(title = "坦克大战1.0"
             attack as IAttackable
 
             views.filter { (it is ISufferable) and (attack != it) and (attack.owner != it) }
-                    .forEach sufferTag@{suffer->
+                    .forEach sufferTag@{ suffer ->
                         suffer as ISufferable
 
                         //判断子弹是否打到被打击物体
@@ -149,7 +150,7 @@ class GameWindow : Window(title = "坦克大战1.0"
                             //提示子弹的刷新
                             attack.notifyAttack(suffer)
                             //通知被打攻击者，产生碰撞
-                            val sufferView=suffer.notifySuffer(attack)
+                            val sufferView = suffer.notifySuffer(attack)
                             sufferView?.let {
                                 //显示挨打的效果
                                 views.addAll(sufferView)
@@ -159,6 +160,20 @@ class GameWindow : Window(title = "坦克大战1.0"
                     }
 
         }
+
+        /**
+         * 自动射击
+         */
+        views.filter { it is IAutoShot }.forEach { autoshot->
+            autoshot as IAutoShot
+
+           val shot=autoshot.autoShot()
+            shot?.let {
+                views.add(shot)
+            }
+
+        }
+
 
 
     }

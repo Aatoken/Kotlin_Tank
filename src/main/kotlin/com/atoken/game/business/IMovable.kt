@@ -31,7 +31,7 @@ interface IMovable : IView {
     /**
      * 什么样的障碍物
      */
-    var blockable:IBlockable?
+    var blockable: IBlockable?
 
     /**
      * 检测在那个方向那个将会发生碰撞
@@ -49,10 +49,10 @@ interface IMovable : IView {
             Direction.RIGHT -> x += speed
         }
 
-        if (x < 0) x = 0
-        if (x > Config.gameWidth - width) x = Config.gameWidth - width
-        if (y < 0) y = 0
-        if (y > Config.gameHeight - height) y = Config.gameHeight - height
+        if (x < 0) return Direction.LEFT
+        if (x > Config.gameWidth - width) return Direction.RIGHT
+        if (y < 0) return Direction.UP
+        if (y > Config.gameHeight - height) return Direction.DOWN
 
         val collision = checkCollision(block.x, block.y, block.width, block.height
                 , x, y, width, height)

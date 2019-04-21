@@ -87,7 +87,7 @@ class Bullet(override val currentDirection: Direction,
 
 
     //血条
-    override val blood: Int = 1
+    override val blood: Int = 2
 
     /**
      * 实时更新血条
@@ -111,7 +111,7 @@ class Bullet(override val currentDirection: Direction,
     }
 
     override fun notifyAttack(sufferable: ISufferable) {
-        //打到墙体销毁子弹
+        //打到可以挨打的物体上就销毁
         isDestroyed = true
     }
 

@@ -66,11 +66,7 @@ class Tank(override var x: Int, override var y: Int) :
             Direction.LEFT -> x -= speed
             Direction.RIGHT -> x += speed
         }
-        //越界的判断
-        if (x < 0) x = 0
-        if (x > Config.gameWidth - width) x = Config.gameWidth - width
-        if (y < 0) y = 0
-        if (y > Config.gameHeight - height) y = Config.gameHeight - height
+
     }
 
     /**
