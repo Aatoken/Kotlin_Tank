@@ -2,20 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59512c77-be88-477b-875d-b98a69f09942" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/atoken/game/business/IAutoShot.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/atoken/game/model/Enemy.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/com/atoken/game/model/Camp.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/atoken/game/GameWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/atoken/game/GameWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/atoken/game/business/IMovable$DefaultImpls.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/atoken/game/business/IMovable$DefaultImpls.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/atoken/game/business/IMovable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/atoken/game/business/IMovable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/atoken/game/model/Blast.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/atoken/game/model/Blast.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/com/atoken/game/model/Bullet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/atoken/game/model/Bullet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/atoken/game/model/Tank$shot$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/atoken/game/model/Tank$shot$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/atoken/game/model/Enemy$autoShot$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/atoken/game/model/Enemy$autoShot$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/atoken/game/model/Enemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/atoken/game/model/Enemy.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/com/atoken/game/model/Tank.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/atoken/game/model/Tank.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/map/1.map" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/map/1.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/atoken/game/GameWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/atoken/game/GameWindow.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/atoken/game/business/IMovable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/atoken/game/business/IMovable.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/atoken/game/model/Bullet.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/atoken/game/model/Bullet.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/atoken/game/model/Enemy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/atoken/game/model/Enemy.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/atoken/game/model/Tank.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/atoken/game/model/Tank.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/map/1.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/map/1.map" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -54,12 +53,13 @@
         <counts>
           <entry key="project.closed" value="4" />
           <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.37" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -68,7 +68,7 @@
           <entry key="gif" value="32" />
           <entry key="gradle" value="1" />
           <entry key="java" value="1" />
-          <entry key="kt" value="295" />
+          <entry key="kt" value="317" />
           <entry key="map" value="2" />
           <entry key="png" value="3" />
         </counts>
@@ -79,21 +79,21 @@
           <entry key="Groovy" value="1" />
           <entry key="Image" value="35" />
           <entry key="JAVA" value="1" />
-          <entry key="Kotlin" value="295" />
+          <entry key="Kotlin" value="317" />
           <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gradle" value="3" />
-          <entry key="kt" value="6102" />
+          <entry key="kt" value="6662" />
           <entry key="map" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="3" />
-          <entry key="Kotlin" value="6102" />
+          <entry key="Kotlin" value="6662" />
           <entry key="PLAIN_TEXT" value="11" />
         </counts>
       </usages-collector>
@@ -101,41 +101,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/atoken/game/model/Tank.kt">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/atoken/game/model/Camp.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="116" column="16" lean-forward="true" selection-start-line="85" selection-start-column="5" selection-end-line="116" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/atoken/game/model/Enemy.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="125" column="11" selection-start-line="125" selection-start-column="11" selection-end-line="125" selection-end-column="11" />
+            <state relative-caret-position="-91">
+              <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
               <folding>
-                <element signature="e#31#278#0" expanded="true" />
+                <element signature="e#31#325#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/atoken/game/GameWindow.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="164" column="15" selection-start-line="164" selection-start-column="15" selection-end-line="164" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/atoken/game/model/Bullet.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24">
-              <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
+            <state relative-caret-position="-2203">
+              <caret line="69" column="8" selection-start-line="69" selection-start-column="8" selection-end-line="69" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -146,8 +128,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin File" />
-        <option value="Kotlin Class" />
         <option value="Kotlin Interface" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -538,11 +520,12 @@
         <option value="$PROJECT_DIR$/src/main/kotlin/com/atoken/game/ext/ViewExt.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/com/atoken/game/model/Steel.kt" />
         <option value="$PROJECT_DIR$/src/main/resources/map/1.map" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/com/atoken/game/model/Bullet.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/com/atoken/game/business/IAutoShot.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/com/atoken/game/business/IMovable.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/com/atoken/game/model/Tank.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/com/atoken/game/business/IAutoShot.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/com/atoken/game/model/Enemy.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/com/atoken/game/model/Bullet.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/com/atoken/game/model/Camp.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/com/atoken/game/GameWindow.kt" />
       </list>
     </option>
@@ -559,6 +542,26 @@
     <option name="width" value="1346" />
     <option name="height" value="688" />
   </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+          <State>
+            <id>Kotlin</id>
+          </State>
+          <State>
+            <id>Redundant constructsKotlin</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>RedundantIf</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -568,8 +571,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -663,7 +666,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555864133110" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555900604392" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -724,11 +727,12 @@
       <workItem from="1555752001015" duration="1690000" />
       <workItem from="1555809736931" duration="14737000" />
       <workItem from="1555834042715" duration="9640000" />
+      <workItem from="1555895816368" duration="4844000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62970000" />
+    <option name="totallyTimeSpent" value="67814000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -743,7 +747,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2755725" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28091604" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -863,13 +867,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/img/bullet_d.gif">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/atoken/game/Config.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/img/bullet_u.gif">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -978,13 +975,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/atoken/game/business/IDestroyable.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="17" column="7" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/atoken/game/ext/ViewExt.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="158">
@@ -996,26 +986,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-78">
           <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/atoken/game/model/Steel.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="32" column="26" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
-          <folding>
-            <element signature="e#31#255#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/atoken/game/business/IAutoMovable.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
-          <folding>
-            <element signature="e#34#107#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1036,20 +1006,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/atoken/game/model/Wall.kt">
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/atoken/game/Config.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="26" column="49" lean-forward="true" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="49" />
+        <state relative-caret-position="168">
+          <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/atoken/game/business/IMovable.kt">
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/atoken/game/model/Steel.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="51" column="40" lean-forward="true" selection-start-line="51" selection-start-column="40" selection-end-line="51" selection-end-column="40" />
-          <folding>
-            <element signature="e#34#137#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="569">
+          <caret line="32" column="26" lean-forward="true" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/atoken/game/model/Tank.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1489">
+          <caret line="47" column="4" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -1060,34 +1034,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/atoken/game/model/Tank.kt">
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/atoken/game/business/IAutoMovable.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="116" column="16" lean-forward="true" selection-start-line="85" selection-start-column="5" selection-end-line="116" selection-end-column="16" />
+        <state relative-caret-position="282">
+          <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+          <folding>
+            <element signature="e#34#107#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/atoken/game/model/Bullet.kt">
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/atoken/game/business/IMovable.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
+        <state relative-caret-position="233">
+          <caret line="65" column="11" lean-forward="true" selection-start-line="65" selection-start-column="11" selection-end-line="65" selection-end-column="11" />
+          <folding>
+            <element signature="e#34#137#0" expanded="true" />
+            <element signature="n#!!block;n#willCollision#0;n#!!block;n#IMovable#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/atoken/game/model/Enemy.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="125" column="11" selection-start-line="125" selection-start-column="11" selection-end-line="125" selection-end-column="11" />
+        <state relative-caret-position="2879">
+          <caret line="177" column="15" selection-start-line="177" selection-start-column="11" selection-end-line="177" selection-end-column="15" />
           <folding>
-            <element signature="e#31#278#0" expanded="true" />
+            <element signature="e#31#241#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/atoken/game/model/Bullet.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="117" column="12" lean-forward="true" selection-start-line="117" selection-start-column="12" selection-end-line="117" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/atoken/game/model/Wall.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="42" column="36" lean-forward="true" selection-start-line="36" selection-start-column="5" selection-end-line="42" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/atoken/game/business/IDestroyable.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="20" column="19" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/atoken/game/GameWindow.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="164" column="15" selection-start-line="164" selection-start-column="15" selection-end-line="164" selection-end-column="15" />
+        <state relative-caret-position="-2203">
+          <caret line="69" column="8" selection-start-line="69" selection-start-column="8" selection-end-line="69" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/com/atoken/game/model/Camp.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-91">
+          <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+          <folding>
+            <element signature="e#31#325#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

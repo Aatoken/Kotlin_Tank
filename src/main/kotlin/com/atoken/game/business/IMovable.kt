@@ -67,7 +67,6 @@ interface IMovable : IView {
      */
     fun notifyCollision(direction: Direction?, block: IBlockable?)
 
-    //可移动物体的移动
-    fun move(direction: Direction)
+
 
 }

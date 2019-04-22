@@ -13,8 +13,8 @@ import org.itheima.kotlin.game.core.Painter
  * Des 坦克 可以移动，可以被销毁，障碍物，可以被挨打
  */
 class Tank(override var x: Int, override var y: Int) :
-        IMovable, IBlockable, ISufferable {
-
+        IMovable, IBlockable, ISufferable,IDestroyable {
+    override fun isDestroyed(): Boolean =blood<=0
 
     override val width: Int = Config.block
     override val height: Int = Config.block
@@ -45,7 +45,7 @@ class Tank(override var x: Int, override var y: Int) :
     /**
      * 坦克移动
      */
-    override fun move(direction: Direction) {
+     fun move(direction: Direction) {
 
         // 判断是否是往要碰撞的方向走
         if (direction == badDirection) {
@@ -126,10 +126,9 @@ class Tank(override var x: Int, override var y: Int) :
     //被攻击之后
     override fun notifySuffer(attackable: IAttackable): Array<IView>? {
         blood -= attackable.attackPower
-
         //喊疼
         Composer.play("snd/hit.wav")
-        return null
+        return arrayOf(Blast(x, y))
     }
 
 }

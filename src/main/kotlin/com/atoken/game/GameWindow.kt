@@ -2,10 +2,7 @@ package com.atoken.game
 
 import com.atoken.game.business.*
 import com.atoken.game.enums.Direction
-import com.atoken.game.ext.checkCollision
 import com.atoken.game.model.*
-import com.sun.org.apache.bcel.internal.generic.IADD
-import com.sun.org.apache.bcel.internal.generic.ISUB
 import javafx.scene.input.KeyCode
 import javafx.scene.input.KeyEvent
 import org.itheima.kotlin.game.core.Window
@@ -53,7 +50,9 @@ class GameWindow : Window(title = "坦克大战1.0"
         tank = Tank(Config.block * 3, Config.block * 9)
         views.add(tank)
 
-
+        //添加大本营
+        //添加大本营
+        views.add(Camp(Config.gameWidth / 2 - Config.block, Config.gameHeight - 96))
     }
 
     override fun onDisplay() {

@@ -6,7 +6,7 @@ import com.atoken.game.enums.Direction
 import org.itheima.kotlin.game.core.Composer
 import org.itheima.kotlin.game.core.Painter
 import java.util.*
-import javax.xml.transform.Templates
+
 
 
 /**
@@ -52,12 +52,6 @@ class Enemy(override var x: Int, override var y: Int)
         this.blockable = block
     }
 
-    /**
-     * 可以避开障碍物
-     */
-    override fun move(direction: Direction) {
-
-    }
 
 
     //是否存活
@@ -68,6 +62,15 @@ class Enemy(override var x: Int, override var y: Int)
 
     //受到攻击刷新
     override fun notifySuffer(attackable: IAttackable): Array<IView>? {
+
+
+        if (attackable.owner is Enemy) {
+            //挨打,不掉血，不给反应
+            //喊疼
+            Composer.play("snd/hit.wav")
+            return null
+        }
+
         blood -= attackable.attackPower
 
         //喊疼
@@ -76,11 +79,21 @@ class Enemy(override var x: Int, override var y: Int)
         //显示爆炸物
         return arrayOf(Blast(x, y))
     }
-
+    //发射频率
+    private var lastShotTime = 0L
+    private var shotFrequency = 800
+    //
+    private var lastMoveTime = 0L
+    private var moveFrequency = 30
     /**
      * 自己移动
      */
     override fun autoMove() {
+
+        //频率检测
+        val current = System.currentTimeMillis()
+        if (current - lastMoveTime < moveFrequency) return
+        lastMoveTime = current
 
         // 判断是否是往要碰撞的方向走
         if (currentDirection == badDirection) {
@@ -126,6 +139,11 @@ class Enemy(override var x: Int, override var y: Int)
      * 自动射击
      */
     override fun autoShot(): IView? {
+
+        val current = System.currentTimeMillis()
+        if (current - lastShotTime < shotFrequency) return null
+        lastShotTime = current
+
         return Bullet(currentDirection, { bulletWidth, bulletHeight ->
 
             //计算子弹真实的坐标
@@ -159,6 +177,9 @@ class Enemy(override var x: Int, override var y: Int)
 
         }, this)
     }
+
+
+
 
 
 

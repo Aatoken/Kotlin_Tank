@@ -48,6 +48,8 @@ class Bullet(override val currentDirection: Direction,
         val pair = create.invoke(width, height)
         x = pair.first
         y = pair.second
+        //设置敌我坦克的子弹的攻击力与血量
+
     }
 
     /**
@@ -59,6 +61,7 @@ class Bullet(override val currentDirection: Direction,
 
     //子弹的速度
     override val speed: Int = 15
+
     override fun autoMove() {
         //根据自己的方向，来改变自己的x和y
         when (currentDirection) {
@@ -68,7 +71,6 @@ class Bullet(override val currentDirection: Direction,
             Direction.RIGHT -> x += speed
         }
     }
-
 
 
     /**
@@ -87,20 +89,19 @@ class Bullet(override val currentDirection: Direction,
 
 
     //血条
-    override val blood: Int = 2
+    override var blood: Int = 1
 
     /**
      * 实时更新血条
      */
     override fun notifySuffer(attackable: IAttackable): Array<IView>? {
-        return arrayOf(Blast(x, y))
+
+        return null
     }
 
 
-
-
     //攻击力为2
-    override val attackPower: Int=1
+    override val attackPower: Int = 1
 
 
     /**
@@ -111,8 +112,12 @@ class Bullet(override val currentDirection: Direction,
     }
 
     override fun notifyAttack(sufferable: ISufferable) {
-        //打到可以挨打的物体上就销毁
-        isDestroyed = true
+        //自己人打自己人子弹不消失
+        isDestroyed =
+                if ((sufferable is Enemy) and (this.owner is Enemy)) {
+            false
+        } else !((sufferable is Tank) and (this.owner is Tank))
+
     }
 
 
