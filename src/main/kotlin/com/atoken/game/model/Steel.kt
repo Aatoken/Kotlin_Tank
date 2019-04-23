@@ -6,7 +6,6 @@ import com.atoken.game.business.IBlockable
 import com.atoken.game.business.ISufferable
 import org.itheima.kotlin.game.core.Composer
 import org.itheima.kotlin.game.core.Painter
-import java.io.File
 
 /**
  * Auther Aatoken

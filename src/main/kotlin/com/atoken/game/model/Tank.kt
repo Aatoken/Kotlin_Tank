@@ -121,7 +121,7 @@ class Tank(override var x: Int, override var y: Int) :
 
 
     //坦克的血量
-    override var blood: Int = 4
+    override var blood: Int = 10
 
     //被攻击之后
     override fun notifySuffer(attackable: IAttackable): Array<IView>? {

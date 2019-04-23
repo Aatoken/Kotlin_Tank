@@ -118,6 +118,7 @@ class Bullet(override val currentDirection: Direction,
             false
         } else !((sufferable is Tank) and (this.owner is Tank))
 
+
     }
 
 

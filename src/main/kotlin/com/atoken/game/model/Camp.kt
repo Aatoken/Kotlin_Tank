@@ -25,7 +25,7 @@ class Camp(override var x: Int, override var y: Int) :
         //喊疼
         Composer.play("snd/hit.wav")
 
-        //前四滴血是墙承受，
+
         if (blood == 3 || blood == 6) {
             val x = x - 32
             val y = y - 32
@@ -55,45 +55,49 @@ class Camp(override var x: Int, override var y: Int) :
     override fun draw() {
         //血量低于 6个时画的时 砖墙
         //血量低于 3个时画的时 没有墙
-        if (blood <= 3) {
-            width = Config.block
-            height = Config.block
-            x = (Config.gameWidth - Config.block) / 2
-            y = Config.gameHeight - Config.block
-            Painter.drawImage("img/camp.gif", x, y)
+        when {
+            blood <= 3 -> {
+                width = Config.block
+                height = Config.block
+                x = (Config.gameWidth - Config.block) / 2
+                y = Config.gameHeight - Config.block
+                Painter.drawImage("img/camp.gif", x, y)
 
-        } else if (blood <= 6) {
+            }
+            blood <= 6 -> {
 
-            //绘制外围的砖块
-            Painter.drawImage("img/wall_small.gif", x, y)
-            Painter.drawImage("img/wall_small.gif", x + 32, y)
-            Painter.drawImage("img/wall_small.gif", x + 64, y)
-            Painter.drawImage("img/wall_small.gif", x + 96, y)
+                //绘制外围的砖块
+                Painter.drawImage("img/wall_small.gif", x, y)
+                Painter.drawImage("img/wall_small.gif", x + 32, y)
+                Painter.drawImage("img/wall_small.gif", x + 64, y)
+                Painter.drawImage("img/wall_small.gif", x + 96, y)
 
-            Painter.drawImage("img/wall_small.gif", x, y + 32)
-            Painter.drawImage("img/wall_small.gif", x, y + 64)
+                Painter.drawImage("img/wall_small.gif", x, y + 32)
+                Painter.drawImage("img/wall_small.gif", x, y + 64)
 
-            Painter.drawImage("img/wall_small.gif", x + 96, y + 32)
-            Painter.drawImage("img/wall_small.gif", x + 96, y + 64)
+                Painter.drawImage("img/wall_small.gif", x + 96, y + 32)
+                Painter.drawImage("img/wall_small.gif", x + 96, y + 64)
 
-            Painter.drawImage("img/camp.gif", x + 32, y + 32)
+                Painter.drawImage("img/camp.gif", x + 32, y + 32)
 
-        } else {
+            }
+            else -> {
 
-            //绘制外围的砖块
-            Painter.drawImage("img/steel_small.gif", x, y)
-            Painter.drawImage("img/steel_small.gif", x + 32, y)
-            Painter.drawImage("img/steel_small.gif", x + 64, y)
-            Painter.drawImage("img/steel_small.gif", x + 96, y)
+                //绘制外围的砖块
+                Painter.drawImage("img/steel_small.gif", x, y)
+                Painter.drawImage("img/steel_small.gif", x + 32, y)
+                Painter.drawImage("img/steel_small.gif", x + 64, y)
+                Painter.drawImage("img/steel_small.gif", x + 96, y)
 
-            Painter.drawImage("img/steel_small.gif", x, y + 32)
-            Painter.drawImage("img/steel_small.gif", x, y + 64)
+                Painter.drawImage("img/steel_small.gif", x, y + 32)
+                Painter.drawImage("img/steel_small.gif", x, y + 64)
 
-            Painter.drawImage("img/steel_small.gif", x + 96, y + 32)
-            Painter.drawImage("img/steel_small.gif", x + 96, y + 64)
+                Painter.drawImage("img/steel_small.gif", x + 96, y + 32)
+                Painter.drawImage("img/steel_small.gif", x + 96, y + 64)
 
-            Painter.drawImage("img/camp.gif", x + 32, y + 32)
+                Painter.drawImage("img/camp.gif", x + 32, y + 32)
 
+            }
         }
     }
     override fun showDestroy(): Array<IView>? {

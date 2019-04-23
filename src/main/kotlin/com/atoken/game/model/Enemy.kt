@@ -19,13 +19,12 @@ class Enemy(override var x: Int, override var y: Int)
         , IAutoMovable ,IAutoShot{
 
 
-    override val width: Int = Config.block
-
-    override val height: Int = Config.block
-
+    override var width: Int = Config.block
+    override var height: Int = Config.block
 
     override fun draw() {
-        val imagePath = when (currentDirection) {
+
+        var imagePath = when (currentDirection) {
             Direction.UP -> "img/enemy_1_u.gif"
             Direction.DOWN -> "img/enemy_1_d.gif"
             Direction.LEFT -> "img/enemy_1_l.gif"
@@ -177,6 +176,9 @@ class Enemy(override var x: Int, override var y: Int)
 
         }, this)
     }
+
+
+
 
 
 
